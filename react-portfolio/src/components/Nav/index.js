@@ -9,12 +9,16 @@ function Nav(props) {
     contactSelected,
     setContactSelected
   } = props;
+
+  useEffect(() => {
+    document.title = capitalizeFirstLetter(currentCategory.name);
+  }, [currentCategory]);
   
   return (
     <header className="flex-row px-1">
       <h2>
         <a data-testid="link" href="/">
-          <span role="img" aria-label="camera"> 📸</span> Oh Snap!
+          James Canter
         </a>
       </h2>
       <nav>
@@ -26,12 +30,12 @@ function Nav(props) {
           </li>
           <li className={`mx-2 ${contactSelected && 'navActive'}`}>
             <span onClick={() => setContactSelected(true)}>
-              Contact
+              Contact Me
             </span>
           </li>
           {categories.map((category) => (
             <li
-              className={`mx-1${currentCategory.name === category.name && !contactSelected && `navActive`}`} 
+              className={`mx-1 ${currentCategory.name === category.name && !contactSelected && `navActive`}`} 
               key={category.name}
             >
               <span onClick={() => {

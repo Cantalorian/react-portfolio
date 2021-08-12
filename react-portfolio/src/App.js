@@ -6,6 +6,7 @@ import Nav from './components/Nav';
 import Portfolio from './components/Portfolio';
 import ContactForm from './components/Contact';
 import Footer from './components/Footer';
+import Header from './components/Header';
 
 function App() {
   const [categories] = useState([
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <div>
+      <Header></Header>
       <Nav
         categories={categories}
         setCurrentCategory={setCurrentCategory}

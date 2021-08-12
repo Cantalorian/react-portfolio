@@ -88,8 +88,11 @@ a:hover {
   text-decoration: underline;
 }
 
-header {
+#header {
   background: var(--dark);
+  text-align: center;
+  justify-content: center;
+  padding: 1rem;
 }
 
 header a {
@@ -145,6 +148,7 @@ input:focus {
 
 li {
   list-style: none;
+  padding: 1rem;
 }
 
 nav a:hover {
@@ -153,6 +157,7 @@ nav a:hover {
 
 nav li {
   cursor: pointer;
+  padding: 1rem;
 }
 
 textarea {

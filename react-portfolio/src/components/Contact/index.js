@@ -32,7 +32,7 @@ function ContactForm() {
         setErrorMessage('');
       }
     }
-  }
+  };
 
 
   return (

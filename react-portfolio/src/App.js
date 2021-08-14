@@ -9,39 +9,68 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 
 function App() {
-  const [categories] = useState([
+
+  // past projects with link info
+  const [projects] = useState([
     {
-      name: 'commercial',
-      description: 'Photos of grocery stores, food trucks, and other commercial projects',
+      image: 'Booksearch.png',
+      title: 'Book Search Engine',
+      link: 'https://secure-hamlet-87161.herokuapp.com/',
+      repo: 'https://github.com/Cantalorian/book-search-engine'
     },
-    { name: 'portraits', description: 'Portraits of people in my life' },
-    { name: 'food', description: 'Delicious delicacies' },
-    { name: 'landscape', description: 'Fields, farmhouses, waterfalls, and the beauty of nature' },
-  ]);
-  
-  const [currentCategory, setCurrentCategory] = useState(categories[0]);
-  
+    {
+      image: 'Budget.png',
+      title: 'Budget Tracker',
+      link: 'https://still-meadow-02494.herokuapp.com/',
+      repo: 'https://github.com/Cantalorian/budget-tracker'
+    },
+    {
+      image: 'EntertainMe.png',
+      title: 'Entertain Me v1.0',
+      link: 'https://cantalorian.github.io/Entertain-Me/',
+      repo: 'https://github.com/Cantalorian/Entertain-Me'
+    },
+    {
+      image: 'NoteTaker.png',
+      title: 'Note Taker',
+      link: 'https://cantalorian.github.io/note-taker/',
+      repo: 'https://github.com/Cantalorian/note-taker'
+    },
+    {
+      image: 'Scheduler.png',
+      title: 'Work Day Scheduler',
+      link: 'https://cantalorian.github.io/work-day-scheduler/',
+      repo: 'https://github.com/Cantalorian/work-day-scheduler'
+    },
+    {
+      image: 'shop.png',
+      title: 'Shop-Shop',
+      link: 'https://enigmatic-castle-31265.herokuapp.com/',
+      repo: 'https://github.com/Cantalorian/shop-shop'
+    }
+  ])
+
+    // need states for each tab
+  const [aboutSelected, setAboutSelected] = useState(true);
+  const [contactSelected, setContactSelected] = useState(false);
+  const [portfolioSelected, setPortfolioSelected] = useState(false);
   const [contactSelected, setContactSelected] = useState(false);
 
   return (
     <div>
       <Header></Header>
       <Nav
-        categories={categories}
-        setCurrentCategory={setCurrentCategory}
-        currentCategory={currentCategory}
+        aboutSelected={aboutSelected}
+        setAboutSelected={setAboutSelected}
         contactSelected={contactSelected}
         setContactSelected={setContactSelected}
+        portfolioSelected={portfolioSelected}
+        setPortfolioSelected={setPortfolioSelected}
       ></Nav>
       <main>
-        {!contactSelected ? (
-          <>
-            <Portfolio currentCategory={currentCategory}></Portfolio>
-            <About></About>
-          </>
-        ) : ( 
-            <ContactForm></ContactForm>
-          )}
+        {portfolioSelected ? (<Portfolio projects={projects}/>)
+          : contactSelected ? (<ContactForm></ContactForm>)
+          : <About></About>}
 
         <Footer></Footer>
       </main>
